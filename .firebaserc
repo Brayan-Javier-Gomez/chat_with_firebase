@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "fir-chat-bd0b2": {
+      "hosting": {
+        "chatFirebase": [
+          "fir-chat-bd0b2"
+        ]
+      }
+    }
+  }
+}
