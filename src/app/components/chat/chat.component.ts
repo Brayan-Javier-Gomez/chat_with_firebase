@@ -42,12 +42,12 @@ enviar_mensaje() {
 
   this.chatService.enviarMensaje(this.mensaje).then(
     ()=>{
-      console.log('se guardo correctamente');
+     
       this.mensaje = '';
     }
     )
     .catch(() => {
-      console.error('no se pudo guardar');
+      console.error('no se pudo enviar');
       this.mensaje = '';
     });
 }

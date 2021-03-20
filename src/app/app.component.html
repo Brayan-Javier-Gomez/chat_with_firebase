@@ -2,7 +2,7 @@
 
     <h1 class="text text-success">ChatFirebase</h1>
 
-    <div class="col-md-12 text-center" *ngIf="chatService.usuario.uid">
+    <div class="col-md-12 text-left" *ngIf="chatService.usuario.uid">
         <button class="btn btn-outline-danger" (click)='chatService.logout()'>Salir</button>
     </div>
 
