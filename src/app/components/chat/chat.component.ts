@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ChatService } from '../../services/chat.service';
+import { Mensaje } from '../../interfaces/chat.interface';
+
 
 @Component({
   selector: 'app-chat',
@@ -8,13 +11,45 @@ import { Component, OnInit } from '@angular/core';
 export class ChatComponent implements OnInit {
 
   mensaje: string;
-  constructor() { }
+  elemeto: any;
+  constructor(public chatService: ChatService) {
+   chatService.cargarmensajes().subscribe(
+() => {
+setTimeout(() => {
 
-  ngOnInit(): void {
+  this.elemeto.scrollTop = this.elemeto.scrollHeight;
+
+}, 30);
+
+}
+   );
+
+
+
+}
+
+
+ngOnInit(): void {
+  this.elemeto = document.getElementById('app-mensajes');
+}
+
+enviar_mensaje() {
+  if (this.mensaje === undefined || this.mensaje === '') {
+    return;
   }
 
-  enviar_mensaje(){
-    console.log(this.mensaje);
-  }
+  
+
+  this.chatService.enviarMensaje(this.mensaje).then(
+    ()=>{
+      console.log('se guardo correctamente');
+      this.mensaje = '';
+    }
+    )
+    .catch(() => {
+      console.error('no se pudo guardar');
+      this.mensaje = '';
+    });
+}
 
 }
